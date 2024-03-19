@@ -1,0 +1,273 @@
+/* Configuration File for Solar Orbiter High Voltage Unit EGSE
+/* 2016_07_19 MPS, Klaus Heerlein
+/* 2016_07_19: added constants for MET_HVU_FM
+/* 2016_09_01: removed outdated calibrations
+/* 2016_10_11: added HK calibration from EUI_HVU_FM 
+/* 2016_10_13: correction of HK calibration SCREEN (HK/CTRL) for MET_HVU_QM and MET_HVU_FM (shunt drop R505 with Fluke 1G probe) 
+/* 2017_03_10: added calibration factors for EUI_HVU_QM (incorporated correction for shunt drop R505 1G probe) 
+/* 2017_06_08: added calibration factors for MET_HVU_FS 
+/* 2017_07_26: added calibration factors for EUI_HVU_FS 
+ 
+
+
+[psu1]
+Output_Voltage=6.0
+Current_Limit=0.1
+OverCurrent_Protection=0.2
+OverVoltage_Protection=8
+Range=1
+
+[psu2]
+Output_Voltage=25.0
+Current_Limit=0.200
+OverCurrent_Protection=0.5
+OverVoltage_Protection=33
+Range=1
+
+
+[aux]
+Output_Voltage=5.0
+Current_Limit=0.200
+OverCurrent_Protection=0.5
+OverVoltage_Protection=5.5
+
+
+[usb]
+Clock Frequency=12e6
+Device Name=DT9812-10V(00)
+
+[egse_allowed_range]
+cst_OC_V0_Min=0.0
+cst_OC_V0_Max=0.100
+cst_OC_V1_Min=0.0
+cst_OC_V1_Max=0.100
+cst_VHV_Min=0
+cst_VHV_Max=26
+cst_VOP_Min=0
+cst_VOP_Max=7
+cst_Screen_Min=10
+cst_Screen_Max=80000
+cst_MCP_Min=-100
+cst_MCP_Max=1200
+
+[OC_THRESHOLD]
+VAL_OC_V1=0.060
+VAL_OC_V0=0.060
+
+
+
+[AVAILABLE_MODELS]
+0=EUI_HVU_FS
+1=EUI_HVU_FM
+2=EUI_HVU_QM
+3=METIS_HVU_QM
+4=METIS_HVU_FM
+5=METIS_HVU_QM
+6=METIS_EMI
+7=METIS_HVU_FS
+
+
+[AVAILABLE_EGSES]
+0=EGSE#3
+1=EGSE#2
+
+
+[EGSE_EGSE#3]
+#// Constants for SOLO EUI/METIS HVU EGSE#3, 2016-03-17;
+#// measured by K. Heerlein
+#//***********************************************************************************;
+#// Calibration File: "2016-03-16 SO-METIS HVU QM Electrical Test and Calibration.xlsx;
+EGSE_CST_CTRL_MCP_FACTOR=1.9862 // EGSE -> Diff. Out
+EGSE_CST_CTRL_MCP_OFFSET=-4.1251 // EGSE -> Diff. Out
+EGSE_CST_CTRL_SCREEN_FACTOR=1.9773 // EGSE -> Diff. Out
+EGSE_CST_CTRL_SCREEN_OFFSET=-4.1026 // EGSE -> Diff. Out
+EGSE_CST_HK_MCP_F=2.0124 // EGSE <- Diff. In
+EGSE_CST_HK_MCP_O=-4.1914 // EGSE <- Diff. In
+EGSE_CST_HK_IMCP_F=2.0269 // EGSE <- Diff. In
+EGSE_CST_HK_IMCP_O=-4.2261 // EGSE <- Diff. In
+EGSE_CST_HK_SCREEN_F=2.0167 // EGSE <- Diff. In
+EGSE_CST_HK_SCREEN_O=-4.2012 // EGSE <- Diff. In
+EGSE_CST_TEMP1_F=-574.30180 // EGSE <- PT1000 Grade 0
+EGSE_CST_TEMP1_O=+2110.40633 // EGSE <- PT1000 Grade 0
+EGSE_CST_TEMP2_F=-577.29875 // EGSE <- PT1000 Grade 0
+EGSE_CST_TEMP2_O=+2122.34950 // EGSE <- PT1000 Grade 0
+
+[EGSE_EGSE#2]
+#// Constants for SOLO EUI/METIS HVU EGSE#2, 2016-05-39;
+#// measured by K. Heerlein
+#//***********************************************************************************;
+#// Calibration File: "2016-03-16 SO-METIS HVU QM Electrical Test and Calibration.xlsx;
+EGSE_CST_CTRL_MCP_FACTOR=1.9831 // EGSE -> Diff. Out
+EGSE_CST_CTRL_MCP_OFFSET=-4.1083 // EGSE -> Diff. Out
+EGSE_CST_CTRL_SCREEN_FACTOR=1.9761 // EGSE -> Diff. Out
+EGSE_CST_CTRL_SCREEN_OFFSET=-4.1166 // EGSE -> Diff. Out
+EGSE_CST_HK_MCP_F=2.0149 // EGSE <- Diff. In
+EGSE_CST_HK_MCP_O=-4.1985// EGSE <- Diff. In
+EGSE_CST_HK_IMCP_F=2.0115 // EGSE <- Diff. In
+EGSE_CST_HK_IMCP_O=-4.1892 // EGSE <- Diff. In
+EGSE_CST_HK_SCREEN_F=2.014 // EGSE <- Diff. In
+EGSE_CST_HK_SCREEN_O=-4.1944 // EGSE <- Diff. In
+EGSE_CST_TEMP1_F=-171.22744 // EGSE <- PT1000 Grade 0
+EGSE_CST_TEMP1_O=+723.37926 // EGSE <- PT1000 Grade 0
+EGSE_CST_TEMP2_F=-170.90213 // EGSE <- PT1000 Grade 0
+EGSE_CST_TEMP2_O=722.33094 // EGSE <- PT1000 Grade 0
+
+[UNIT_EUI_HVU_FS]
+#// Constants for EUI HVU FS, 2017-07-26;
+#// new calibration -> HVU to diff. Voltage
+#// correct calibration with Screen measured in front of R505
+#// MCP voltage measured in front of shunt with resp. to connector Return 
+#//***********************************************************************************;
+#// Calibration File: "2017-07-25 SO-EUI_HVU_FS Electrical Tests and Calibration;
+CST_CTRL_MCP_FACTOR=0.00716 //HVU -> Diff. Out
+CST_CTRL_MCP_OFFSET=-3.62229 //HVU -> Diff. Out
+CST_CTRL_SCREEN_FACTOR=0.00113 //HVU -> Diff. Out
+CST_CTRL_SCREEN_OFFSET=-3.850563 //HVU -> Diff. Out
+CST_HK_MCP_F=0.00733 //HVU <- Diff. In
+CST_HK_MCP_O=-3.91498 //HVU <- Diff. In
+CST_HK_IMCP_F=0.05659 //HVU <- Diff. In
+CST_HK_IMCP_O=-2.84228 //HVU <- Diff. In
+CST_HK_SCREEN_F=0.00105  //HVU <- Diff. In
+CST_HK_SCREEN_O=-3.96925 //HVU <- Diff. In
+CST_HK_TEMP1_F=1
+CST_HK_TEMP1_O=0
+CST_HK_TEMP2_F=1
+CST_HK_TEMP2_O=0
+
+
+[UNIT_EUI_HVU_FM]
+#// Constants for EUI HVU FM, 2016-10-11;
+#// new calibration -> HVU to diff. Voltage
+#// correct calibration with Screen measured in front of R505 
+#//***********************************************************************************;
+#// Calibration File: "2016-10-11 SO-EUI_HVU_FM Electrical Tests and Calibration;
+CST_CTRL_MCP_FACTOR=0.00711 //HVU -> Diff. Out
+CST_CTRL_MCP_OFFSET=-3.61668 //HVU -> Diff. Out
+CST_CTRL_SCREEN_FACTOR=0.00113 //HVU -> Diff. Out
+CST_CTRL_SCREEN_OFFSET=-3.85148 //HVU -> Diff. Out
+CST_HK_MCP_F=0.00734 //HVU <- Diff. In
+CST_HK_MCP_O=-3.92153 //HVU <- Diff. In
+CST_HK_IMCP_F=0.05662 //HVU <- Diff. In
+CST_HK_IMCP_O=-2.84364 //HVU <- Diff. In
+CST_HK_SCREEN_F=0.00105  //HVU <- Diff. In
+CST_HK_SCREEN_O=-3.97530 //HVU <- Diff. In
+CST_HK_TEMP1_F=1
+CST_HK_TEMP1_O=0
+CST_HK_TEMP2_F=1
+CST_HK_TEMP2_O=0
+
+[UNIT_EUI_HVU_QM]
+#// Constants for EUI HVU QM, 2017-03-10;
+#// new calibration -> HVU to diff. Voltage
+#// correct calibration with shunt correction of R505 
+#//***********************************************************************************;
+#// Calibration File: "2017-03-10 SO-EUI_HVU_QM Electrical Tests and Calibration;
+CST_CTRL_MCP_FACTOR=0.00780 //HVU -> Diff. Out
+CST_CTRL_MCP_OFFSET=-3.68576 //HVU -> Diff. Out
+CST_CTRL_SCREEN_FACTOR=0.00116 //HVU -> Diff. Out
+CST_CTRL_SCREEN_OFFSET=-3.87307 //HVU -> Diff. Out
+CST_HK_MCP_F=0.00788 //HVU <- Diff. In
+CST_HK_MCP_O=-3.95093 //HVU <- Diff. In
+CST_HK_IMCP_F=0.05669 //HVU <- Diff. In
+CST_HK_IMCP_O=-2.84955 //HVU <- Diff. In
+CST_HK_SCREEN_F=0.00107  //HVU <- Diff. In
+CST_HK_SCREEN_O=-3.96365 //HVU <- Diff. In
+CST_HK_TEMP1_F=1
+CST_HK_TEMP1_O=0
+CST_HK_TEMP2_F=1
+CST_HK_TEMP2_O=0
+
+
+[UNIT_METIS_HVU_FM]
+#// Constants for METIS HVU FM, 2016-10-12;
+#// new calibration -> HVU to diff. Voltage
+#// corrected for output voltage drop caused by shunt R505 and load with Fluke HV probe 1GOhm 
+#//***********************************************************************************;
+#// Calibration File: "2016-07-11 SO-METIS_HVU_FM Electrical Test and Calibration.xlsx;
+CST_CTRL_MCP_FACTOR=0.00707 //HVU -> Diff. Out
+CST_CTRL_MCP_OFFSET=-3.62198 //HVU -> Diff. Out
+CST_CTRL_SCREEN_FACTOR=0.00115 //HVU -> Diff. Out
+CST_CTRL_SCREEN_OFFSET=-3.90169 //HVU -> Diff. Out
+CST_HK_MCP_F=0.0073 //HVU <- Diff. In
+CST_HK_MCP_O=-3.8885 //HVU <- Diff. In
+CST_HK_IMCP_F=0.05653 //HVU <- Diff. In
+CST_HK_IMCP_O=-2.83324 //HVU <- Diff. In
+CST_HK_SCREEN_F=0.0011  //HVU <- Diff. In
+CST_HK_SCREEN_O=-3.9632 //HVU <- Diff. In
+CST_HK_TEMP1_F=1
+CST_HK_TEMP1_O=0
+CST_HK_TEMP2_F=1
+CST_HK_TEMP2_O=0
+
+[UNIT_METIS_HVU_FS]
+#// Constants for METIS HVU FS, 2017-06-08;
+#// new calibration -> HVU to diff. Voltage
+#// corrected for output voltage drop caused by shunt R505 and load with Fluke HV probe 1GOhm 
+#//***********************************************************************************;
+#// Calibration File: "2017-06-07 SO-METIS_HVU_FS Electrical Tests and Calibration.xlsx";
+CST_CTRL_MCP_FACTOR=0.00716 //HVU -> Diff. Out
+CST_CTRL_MCP_OFFSET=-3.63142 //HVU -> Diff. Out
+CST_CTRL_SCREEN_FACTOR=0.00115 //HVU -> Diff. Out
+CST_CTRL_SCREEN_OFFSET=-3.92460 //HVU -> Diff. Out
+CST_HK_MCP_F=0.00732 //HVU <- Diff. In
+CST_HK_MCP_O=-3.88906 //HVU <- Diff. In
+CST_HK_IMCP_F=0.05620 //HVU <- Diff. In
+CST_HK_IMCP_O=-2.85993 //HVU <- Diff. In
+CST_HK_SCREEN_F=0.00105  //HVU <- Diff. In
+CST_HK_SCREEN_O=-3.97169 //HVU <- Diff. In
+CST_HK_TEMP1_F=1
+CST_HK_TEMP1_O=0
+CST_HK_TEMP2_F=1
+CST_HK_TEMP2_O=0
+
+
+[UNIT_METIS_HVU_QM]
+#// Constants for METIS HVU QM, 2016-10-12;
+#// new calibration -> HVU to diff. Voltage
+#// corrected for output voltage drop caused by shunt R505 and load with Fluke HV probe 1GOhm 
+#//***********************************************************************************;
+#// Calibration File: "2016-03-16 SO-METIS HVU QM Electrical Test and Calibration.xlsx;
+CST_CTRL_MCP_FACTOR=0.00705 //HVU -> Diff. Out
+CST_CTRL_MCP_OFFSET=-3.66386 //HVU -> Diff. Out
+CST_CTRL_SCREEN_FACTOR=0.00116 //HVU -> Diff. Out
+CST_CTRL_SCREEN_OFFSET=-3.90779 //HVU -> Diff. Out
+CST_HK_MCP_F=0.0073 //HVU <- Diff. In
+CST_HK_MCP_O=-3.855 //HVU <- Diff. In
+CST_HK_IMCP_F=0.05646 //HVU <- Diff. In
+CST_HK_IMCP_O=-2.86265 //HVU <- Diff. In
+CST_HK_SCREEN_F=0.0011  //HVU <- Diff. In
+CST_HK_SCREEN_O=-3.9467 //HVU <- Diff. In
+CST_HK_TEMP1_F=1
+CST_HK_TEMP1_O=0
+CST_HK_TEMP2_F=1
+CST_HK_TEMP2_O=0
+
+
+
+
+
+[UNIT_METIS_EMI]
+
+#// preliminary constants copied from: METIS HVU QM, 2016-03-17;
+#// new calibration -> HVU to diff. Voltage
+#//***********************************************************************************;
+#// to be recalibrated with EM !!!!!!!!
+#// Calibration File: "2016-03-16 SO-METIS HVU QM Electrical Test and Calibration.xlsx;
+CST_CTRL_MCP_FACTOR=0.00705 //HVU -> Diff. Out
+CST_CTRL_MCP_OFFSET=-3.66386 //HVU -> Diff. Out
+CST_CTRL_SCREEN_FACTOR=0.00122 //HVU -> Diff. Out
+CST_CTRL_SCREEN_OFFSET=-3.91491 //HVU -> Diff. Out
+CST_HK_MCP_F=0.0073 //HVU <- Diff. In
+CST_HK_MCP_O=-3.855 //HVU <- Diff. In
+CST_HK_IMCP_F=0.05646 //HVU <- Diff. In
+CST_HK_IMCP_O=-2.86265 //HVU <- Diff. In
+CST_HK_SCREEN_F=0.0011  //HVU <- Diff. In
+CST_HK_SCREEN_O=-3.899 //HVU <- Diff. In
+CST_HK_TEMP1_F=1
+CST_HK_TEMP1_O=0
+CST_HK_TEMP2_F=1
+CST_HK_TEMP2_O=0
+
+
+
+
